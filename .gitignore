@@ -42,3 +42,62 @@ src/main/generated/
 ### 운영, 로컬 설정 파일
 src/main/resources/application-prod.yml
 src/main/resources/application-local.yml
+# Dependency directories
+/node_modules
+
+# Environment files
+.env*
+!.env.example
+
+# Build files
+/build
+/dist
+
+# Cache and logs
+/.cache
+/logs
+
+# Compiled files
+*.log
+*.pid
+*.seed
+*.pid.lock
+*.log.*
+*.yarnclean
+
+# Operating System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# IDE files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.user
+*.vscode
+
+# Test coverage
+/coverage
+
+# npm debug log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.vscode/
+*.code-workspace
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
