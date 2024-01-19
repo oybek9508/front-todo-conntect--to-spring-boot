@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './security/AuthContext';
 
-function LoginComponent() {
+const LoginComponent = () => {
     const [username, setUsername] = useState('oybek');
 
     const [password, setPassword] = useState('');
@@ -13,21 +13,21 @@ function LoginComponent() {
 
     const authContext = useAuth();
 
-    function handleUsernameChange(event) {
+    const handleUsernameChange = (event) => {
         setUsername(event.target.value);
-    }
+    };
 
-    function handlePasswordChange(event) {
+    const handlePasswordChange = (event) => {
         setPassword(event.target.value);
-    }
+    };
 
-    function handleSubmit() {
-        if (authContext.login(username, password)) {
+    const handleSubmit = async () => {
+        if (await authContext.login(username, password)) {
             navigate(`/welcome/${username}`);
         } else {
             setShowErrorMessage(true);
         }
-    }
+    };
 
     return (
         <div className='Login'>
@@ -52,6 +52,6 @@ function LoginComponent() {
             </div>
         </div>
     );
-}
+};
 
 export default LoginComponent;

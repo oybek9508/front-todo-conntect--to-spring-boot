@@ -1,9 +1,4 @@
-import axios from 'axios';
-
-const apiClient = axios.create({
-    baseURL: 'http://localhost:8080',
-    withCredentials: true,
-});
+import { apiClient } from './ApiClient';
 
 export const retrieveHelloWorldBean = async () => {
     try {
@@ -16,12 +11,23 @@ export const retrieveHelloWorldBean = async () => {
 };
 
 //Response to preflight request doesn't pass access control check => Authorization header
-export const retrieveHelloWorldPathVariable = async (username) => {
+export const retrieveHelloWorldPathVariable = async (username, token) => {
     try {
-        const res = apiClient.get(`/hello-world/path-variable/${username}`);
+        const res = apiClient.get(`/hello-world/path-variable/${username}`, {
+            // headers: {
+            //     Authorization: token,
+            // },
+        });
         return res;
     } catch (error) {
         console.log('error', error);
         throw error;
     }
 };
+
+export const executeBasicAuthorizationService = async (token) =>
+    await apiClient.get('/basicauth', {
+        // headers: {
+        //     Authorization: token,
+        // },
+    });

@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { retrieveHelloWorldPathVariable } from './api/HelloWorldApiService';
+import { useAuth } from './security/AuthContext';
 
 function WelcomeComponent() {
     const { username } = useParams();
     const [message, setMessage] = useState(null);
+    const authContext = useAuth();
+    const { token } = authContext;
 
     // const callHelloWorldRestApi = async () => {
     //     try {
@@ -18,7 +21,7 @@ function WelcomeComponent() {
     const callHelloWorldPathVariable = async () => {
         try {
             if (!!username) {
-                const res = await retrieveHelloWorldPathVariable(username);
+                const res = await retrieveHelloWorldPathVariable(username, token);
                 setMessage(res.data.message);
             } else {
                 console.log('username is null');
